@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STORM FC — Gitugi, Murang'a</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pitch: #0F1F17;
+    --pitch-2: #16301F;
+    --storm: #4A3E8F;
+    --storm-light: #7268C4;
+    --clay: #C6541D;
+    --chalk: #F2EEE3;
+    --chalk-dim: #C9C4B6;
+    --gold: #C99A3B;
+    --display: 'Anton', sans-serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--pitch);
+    color:var(--chalk);
+    font-family:var(--body);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  ::selection{ background:var(--clay); color:var(--chalk); }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(15,31,23,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(242,238,227,0.08);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:var(--display); letter-spacing:0.03em; font-size:1.15rem; }
+  .brand .badge-img{
+    width:34px; height:34px; border-radius:50%; object-fit:cover;
+    border:1px solid rgba(242,238,227,0.25);
+    flex-shrink:0;
+  }
+  nav ul{ list-style:none; display:flex; gap:28px; font-size:0.85rem; font-weight:600; letter-spacing:0.02em; text-transform:uppercase; }
+  nav ul li a{ text-decoration:none; opacity:0.8; transition:opacity .2s; }
+  nav ul li a:hover{ opacity:1; color:var(--gold); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--chalk); font-size:1.5rem; cursor:pointer; }
+
+  @media (max-width: 720px){
+    nav ul{ display:none; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-top:90px; padding-bottom:60px;
+    overflow:hidden;
+  }
+  .storm-front{
+    position:absolute; inset:0; z-index:0; opacity:0.9;
+  }
+  .hero .wrap{ position:relative; z-index:2; }
+  .eyebrow{
+    font-family:var(--mono); font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:26px; height:2px; background:var(--gold); display:inline-block; }
+  h1.title{
+    font-family:var(--display);
+    font-size:clamp(3.2rem, 11vw, 8rem);
+    line-height:0.92;
+    letter-spacing:0.01em;
+    text-transform:uppercase;
+    color:var(--chalk);
+  }
+  h1.title span{ color:var(--clay); }
+  .hero-sub{
+    max-width:520px; margin-top:22px; font-size:1.08rem; color:var(--chalk-dim);
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:32px; margin-top:40px;
+  }
+  .hero-meta div{ border-left:2px solid var(--storm-light); padding-left:14px; }
+  .hero-meta .num{ font-family:var(--mono); font-size:1.6rem; color:var(--chalk); }
+  .hero-meta .lbl{ font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--chalk-dim); }
+  .scroll-cue{
+    position:absolute; bottom:28px; left:28px; font-family:var(--mono); font-size:0.7rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--chalk-dim);
+    display:flex; align-items:center; gap:8px; z-index:2;
+  }
+  .scroll-cue .line{ width:1px; height:36px; background:var(--chalk-dim); animation:drop 1.8s ease-in-out infinite; }
+  @keyframes drop{ 0%,100%{ transform:scaleY(0.4); opacity:0.4; } 50%{ transform:scaleY(1); opacity:1; } }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ position:relative; padding:120px 0; }
+  .section-head{ margin-bottom:56px; max-width:640px; }
+  .kicker{
+    font-family:var(--mono); font-size:0.75rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--storm-light); margin-bottom:14px;
+  }
+  h2.section-title{
+    font-family:var(--display); font-size:clamp(2rem, 5vw, 3.4rem); text-transform:uppercase; line-height:1;
+  }
+  .section-body{ color:var(--chalk-dim); margin-top:16px; font-size:1.02rem; max-width:560px; }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- HISTORY / TIMELINE ---------- */
+  .history{ background:var(--pitch-2); }
+  .timeline{ position:relative; padding-left:2px; }
+  .timeline::before{
+    content:''; position:absolute; left:46px; top:0; bottom:0; width:2px;
+    background:linear-gradient(var(--storm), var(--clay));
+    opacity:0.5;
+  }
+  .t-row{
+    position:relative; display:grid; grid-template-columns:92px 1fr; gap:24px;
+    padding:26px 0; border-bottom:1px solid rgba(242,238,227,0.07);
+  }
+  .t-row:last-child{ border-bottom:none; }
+  .t-year{
+    font-family:var(--mono); font-size:1rem; color:var(--gold); position:relative;
+    display:flex; align-items:flex-start; justify-content:flex-end; padding-right:16px;
+  }
+  .t-year::after{
+    content:''; position:absolute; right:-5px; top:6px; width:10px; height:10px; border-radius:50%;
+    background:var(--clay); box-shadow:0 0 0 4px var(--pitch-2);
+  }
+  .t-content h3{ font-family:var(--body); font-weight:700; font-size:1.05rem; margin-bottom:4px; }
+  .t-content p{ color:var(--chalk-dim); font-size:0.95rem; max-width:520px; }
+
+  @media (max-width:600px){
+    .timeline::before{ left:34px; }
+    .t-row{ grid-template-columns:60px 1fr; gap:14px; }
+  }
+
+  /* ---------- MANAGER TRIBUTE ---------- */
+  .tribute{
+    background:linear-gradient(180deg, var(--pitch) 0%, #1B2F22 100%);
+  }
+  .tribute-grid{
+    display:grid; grid-template-columns:260px 1fr; gap:56px; align-items:center;
+  }
+  .tribute-photo{
+    width:100%; aspect-ratio:4/5; border-radius:10px; overflow:hidden;
+    background:linear-gradient(135deg, var(--storm), var(--pitch-2));
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(242,238,227,0.12);
+    position:relative;
+  }
+  .tribute-photo img{ width:100%; height:100%; object-fit:cover; }
+  .tribute-photo .ph-label{
+    font-family:var(--mono); font-size:0.7rem; text-align:center; color:var(--chalk-dim);
+    letter-spacing:0.05em; padding:0 20px; text-transform:uppercase;
+  }
+  .tribute-name{ font-family:var(--display); font-size:clamp(1.8rem, 4vw, 2.6rem); text-transform:uppercase; }
+  .tribute-alias{ font-family:var(--mono); color:var(--gold); font-size:0.95rem; margin-top:6px; }
+  .tribute-copy{ color:var(--chalk-dim); margin-top:20px; max-width:520px; }
+  .stat-strip{ display:flex; gap:40px; margin-top:32px; flex-wrap:wrap; }
+  .stat-strip .num{ font-family:var(--mono); font-size:2rem; color:var(--chalk); }
+  .stat-strip .lbl{ font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--chalk-dim); }
+
+  @media (max-width:720px){
+    .tribute-grid{ grid-template-columns:1fr; }
+    .tribute-photo{ max-width:240px; }
+  }
+
+  /* ---------- MOMENTS GALLERY (real photos) ---------- */
+  .moments-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:20px;
+  }
+  .moment-card{
+    border-radius:10px; overflow:hidden; background:var(--pitch);
+    border:1px solid rgba(242,238,227,0.08);
+  }
+  .moment-card img{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+  .moment-card .cap{ padding:12px 14px; font-size:0.85rem; color:var(--chalk-dim); }
+
+  /* ---------- LEGENDS GALLERY ---------- */
+  .legends-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:22px;
+  }
+  .legend-card{
+    background:var(--pitch-2); border-radius:10px; overflow:hidden;
+    border:1px solid rgba(242,238,227,0.08);
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .legend-card:hover{ transform:translateY(-4px); border-color:var(--clay); }
+  .legend-photo{
+    aspect-ratio:3/4; background:linear-gradient(160deg, #223626, #14261C);
+    display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .legend-photo img{ width:100%; height:100%; object-fit:cover; }
+  .legend-photo .ph-label{
+    font-family:var(--mono); font-size:0.62rem; color:var(--chalk-dim); text-align:center; padding:0 14px;
+    text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .legend-info{ padding:14px 14px 16px; }
+  .legend-info h4{ font-size:0.95rem; font-weight:700; }
+  .legend-info span{ font-family:var(--mono); font-size:0.72rem; color:var(--storm-light); text-transform:uppercase; }
+  .add-legend{
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    border:1px dashed rgba(242,238,227,0.25); border-radius:10px; aspect-ratio:3/4.6;
+    color:var(--chalk-dim); font-family:var(--mono); font-size:0.75rem; padding:20px;
+  }
+
+  /* ---------- SPONSOR PITCH ---------- */
+  .sponsor{ background:var(--pitch-2); }
+  .sponsor-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:16px; }
+  .sponsor-card{
+    background:var(--pitch); border-radius:10px; padding:28px 24px;
+    border:1px solid rgba(242,238,227,0.08);
+  }
+  .sponsor-card .num{ font-family:var(--mono); color:var(--clay); font-size:0.85rem; margin-bottom:12px; display:block; }
+  .sponsor-card h3{ font-size:1.1rem; margin-bottom:8px; }
+  .sponsor-card p{ color:var(--chalk-dim); font-size:0.92rem; }
+  @media (max-width:820px){ .sponsor-grid{ grid-template-columns:1fr; } }
+
+  .cta-row{ margin-top:44px; display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--body); font-weight:700; font-size:0.9rem; text-decoration:none;
+    padding:14px 28px; border-radius:6px; display:inline-block; letter-spacing:0.02em;
+  }
+  .btn-primary{ background:var(--clay); color:var(--chalk); }
+  .btn-outline{ border:1px solid var(--chalk-dim); color:var(--chalk); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--pitch); padding:64px 0 36px; border-top:1px solid rgba(242,238,227,0.08); }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; }
+  footer h5{ font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--chalk-dim); margin-bottom:14px; }
+  footer p, footer a{ color:var(--chalk-dim); font-size:0.92rem; text-decoration:none; }
+  footer ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .foot-brand{ font-family:var(--display); font-size:1.4rem; text-transform:uppercase; margin-bottom:10px; }
+  .fine{ margin-top:48px; font-family:var(--mono); font-size:0.72rem; color:var(--chalk-dim); opacity:0.6; }
+  @media (max-width:720px){ .footer-grid{ grid-template-columns:1fr; gap:28px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><img class="badge-img" src="images/crest.jpg" alt="STORM FC crest"> STORM FC</div>
+    <ul>
+      <li><a href="#history">History</a></li>
+      <li><a href="#manager">Baba Chui</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#legends">Legends</a></li>
+      <li><a href="#sponsor">Partner With Us</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <svg class="storm-front" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#4A3E8F" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#0F1F17" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#C6541D" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#0F1F17" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <polygon points="1200,0 1200,500 700,0" fill="url(#g1)"/>
+    <polygon points="0,800 500,800 250,300" fill="url(#g2)"/>
+    <polyline points="620,0 560,180 650,190 500,420 590,430 430,700" fill="none" stroke="#C99A3B" stroke-width="2" stroke-opacity="0.5"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Gitugi Ward &middot; Murang'a County &middot; Est. 2004</div>
+    <h1 class="title">STORM<br><span>FC</span></h1>
+    <div class="eyebrow" style="margin-top:14px; margin-bottom:0;">a.k.a. The Silent Lions</div>
+    <p class="hero-sub">A community football club built on discipline, mentorship, and the belief that talent in Gitugi deserves a real pitch to grow on.</p>
+    <div class="hero-meta">
+      <div><div class="num">2004</div><div class="lbl">Founded</div></div>
+      <div><div class="num">22</div><div class="lbl">Years running</div></div>
+      <div><div class="num">1</div><div class="lbl">Manager, from day one</div></div>
+      <div><div class="num">★</div><div class="lbl">Regular Gitugi Ward champions</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="line"></span> Scroll</div>
+</section>
+
+<section class="history" id="history">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The Story So Far</div>
+      <h2 class="section-title">Since 2004</h2>
+      <p class="section-body">Two decades of matchdays, training sessions on borrowed pitches, and young players from Gitugi finding their footing. This timeline is a living record — replace the entries below with the club's real seasons and milestones.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="t-row reveal">
+        <div class="t-year">2004</div>
+        <div class="t-content">
+          <h3>The club is founded</h3>
+          <p>STORM FC is formed in Gitugi Ward under Muchoki's leadership, as a home for local football talent. Add the founding story here — who started it, and why.</p>
+        </div>
+      </div>
+      <div class="t-row reveal">
+        <div class="t-year">— to —</div>
+        <div class="t-content">
+          <h3>A ward power, most seasons</h3>
+          <p>STORM FC has won the Gitugi Ward league almost every year, and has sometimes carried that form all the way to the Mathioya Constituency level — regularly meeting rivals like Chui FC, Gikoe FC, and Youngstar FC in ward derbies and playoff finals.</p>
+        </div>
+      </div>
+      <div class="t-row reveal">
+        <div class="t-year">2025</div>
+        <div class="t-content">
+          <h3>Gitugi Ward Champions</h3>
+          <p>STORM FC are crowned Gitugi Ward Champions in the Murang'a County League — another title in a long run of ward-level success.</p>
+        </div>
+      </div>
+      <div class="t-row reveal">
+        <div class="t-year">2026</div>
+        <div class="t-content">
+          <h3>Still going strong</h3>
+          <p>Today, STORM FC continues developing young players under the same leadership that started it all in 2004, competing in local tournaments like Play to Prosperity and ward semis and finals at Gitugi Grounds.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tribute" id="manager">
+  <div class="wrap">
+    <div class="kicker reveal">A Tribute</div>
+    <div class="tribute-grid reveal">
+      <div class="tribute-photo">
+        <img src="images/muchoki.jpg" alt="Muchoki, manager of STORM FC">
+      </div>
+      <div>
+        <div class="tribute-name">Muchoki</div>
+        <div class="tribute-alias">"Tisu" &middot; "Baba Chui"</div>
+        <p class="tribute-copy">From the club's founding in 2004 to today, Muchoki has been the one constant at STORM FC — training young players, showing up for every season, and building something the whole ward can be proud of. This space is for the club's tribute to him: add the story of how he started, the players he's shaped, and what "Baba Chui" means to the team.</p>
+        <div class="stat-strip">
+          <div><div class="num">22</div><div class="lbl">Years as manager</div></div>
+          <div><div class="num">1</div><div class="lbl">Club, one leader</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="moments" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">From The Pitch</div>
+      <h2 class="section-title">Matchday Moments</h2>
+      <p class="section-body">Real photos from STORM FC's training sessions, derbies, and tournaments in Gitugi Ward and beyond.</p>
+    </div>
+    <div class="moments-grid reveal">
+      <div class="moment-card"><img src="images/team-1.jpg" alt="STORM FC players in training bibs"><div class="cap">Warm-ups before kickoff</div></div>
+      <div class="moment-card"><img src="images/team-2.jpg" alt="STORM FC squad photo"><div class="cap">Squad photo, backed by the community</div></div>
+      <div class="moment-card"><img src="images/team-3.jpg" alt="STORM FC matchday lineup"><div class="cap">Matchday lineup</div></div>
+      <div class="moment-card"><img src="images/team-5.jpg" alt="STORM FC team photo"><div class="cap">Ready for another season</div></div>
+      <div class="moment-card"><img src="images/team-6.jpg" alt="STORM FC players in a huddle"><div class="cap">Between whistles — team huddle</div></div>
+      <div class="moment-card"><img src="images/team-7.jpg" alt="STORM FC team lineup"><div class="cap">Lining up for the derby</div></div>
+      <div class="moment-card"><img src="images/team-8.jpg" alt="STORM FC players training"><div class="cap">Training in the club's colours</div></div>
+      <div class="moment-card"><img src="images/team-9.jpg" alt="STORM FC squad"><div class="cap">Squad strength, season after season</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="legends" id="legends">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Gallery</div>
+      <h2 class="section-title">The Legends</h2>
+      <p class="section-body">Every player who's worn the STORM FC shirt has a place here.</p>
+    </div>
+    <div class="legends-grid reveal">
+      <div class="legend-card">
+        <div class="legend-photo"><img src="images/kelvin.jpg" alt="Kelvin, former STORM FC player"></div>
+        <div class="legend-info"><h4>Kelvin</h4><span>Former Player</span></div>
+      </div>
+      <div class="legend-card">
+        <div class="legend-photo"><img src="images/micah.jpg" alt="Micah, STORM FC's all-time goalkeeper, coaching a training session"></div>
+        <div class="legend-info"><h4>Micah</h4><span>All-Time Goalkeeper &middot; Coach</span></div>
+      </div>
+      <div class="legend-card">
+        <div class="legend-photo"><img src="images/mwanee.jpg" alt="Mwaniki, aka Mwanee, holding midfielder"></div>
+        <div class="legend-info"><h4>Mwaniki "Mwanee"</h4><span>Holding Midfielder &middot; 2025&ndash;date</span></div>
+      </div>
+      <div class="legend-card">
+        <div class="legend-photo"><img src="images/davy.jpg" alt="Davy, goal-scoring forward"></div>
+        <div class="legend-info"><h4>Davy</h4><span>Goal-Scoring Machine &middot; 2022&ndash;date</span></div>
+      </div>
+      <div class="legend-card">
+        <div class="legend-photo"><img src="images/mashaa.jpg" alt="Mashaa, defender and academy graduate"></div>
+        <div class="legend-info"><h4>Mashaa</h4><span>Defender &middot; Academy Graduate</span></div>
+      </div>
+      <div class="add-legend">+ Add another legend</div>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:64px;">
+      <div class="kicker">Squad By Squad</div>
+      <h2 class="section-title">Through The Eras</h2>
+      <p class="section-body">STORM FC's squads, season by season, and the names behind them.</p>
+    </div>
+    <div class="moments-grid reveal">
+      <div class="moment-card">
+        <img src="images/squad-founding-defenders.jpg" alt="Muchoki with Paulo, Jonte, and Mashaa">
+        <div class="cap"><strong>Muchoki</strong> (manager) with <strong>Paulo</strong>, <strong>Jonte</strong>, and <strong>Mashaa</strong> — all defenders</div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-2020-2021.jpg" alt="The 2020-2021 STORM FC squad">
+        <div class="cap">2020–2021 squad: <strong>Mururu</strong>, <strong>Stivo</strong>, <strong>Marto</strong>, <strong>Ramsey</strong>, and <strong>Davey</strong>, captained by <strong>Jack</strong></div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-academy-2021-2023.jpg" alt="STORM Academy graduates 2021-2023">
+        <div class="cap">Storm Academy, 2021–2023: <strong>Marto</strong>, <strong>Steve</strong>, <strong>Ramsey</strong> ("Watua"), and <strong>Paulo</strong> — mostly defenders, with Steve at winger</div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-2022.jpg" alt="The 2022 STORM FC squad">
+        <div class="cap">2022 squad — many graduates of Green FC, STORM's feeder team</div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-2023-champions-a.jpg" alt="The 2023 ward tournament champions">
+        <div class="cap">2023 ward tournament champions, sponsored by <strong>Hon. Morris Thuku</strong> — featuring young defender <strong>Vaite</strong>, then still a high schooler</div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-2023-champions-b.jpg" alt="The 2023 squad">
+        <div class="cap">2023 squad: <strong>Jaymoo</strong>, <strong>Paulo</strong>, <strong>Marto</strong>, and <strong>Michael</strong></div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-2024-2025.jpg" alt="The 2024-2025 STORM FC squad at half-time">
+        <div class="cap">2024–2025 squad, together at half-time</div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-greenfc-2023.jpg" alt="Green FC 2023 squad, STORM FC's feeder team">
+        <div class="cap">Green FC (STORM's feeder team), 2023 squad: <strong>Marto</strong>, <strong>Ndush</strong>, <strong>Shishoka</strong>, <strong>Mwas Giks</strong>, <strong>Vaite</strong>, <strong>Caicedo</strong>, <strong>Mashaa</strong>, <strong>Manyui</strong>, and <strong>Binkou</strong></div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-stormfc-2023-gray.jpg" alt="STORM FC 2023 squad">
+        <div class="cap">STORM FC, 2023 squad: <strong>Hagu</strong>, <strong>Consol</strong>, <strong>Anto</strong>, <strong>Paulo</strong>, <strong>Mashaa</strong>, <strong>Mikey</strong>, <strong>Chaplain</strong>, <strong>Sammy</strong>, <strong>Bandera's</strong>, <strong>Saba</strong>, <strong>Mose</strong>, <strong>Rayu</strong>, <strong>Marto Kabuda</strong>, <strong>Ramsey</strong>, <strong>Davy</strong>, <strong>Mururu</strong>, <strong>Manyui</strong>, <strong>Symo</strong>, and <strong>Vosti</strong></div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-2024.jpg" alt="Part of the 2024 STORM FC squad">
+        <div class="cap">2024 squad: <strong>Sammy</strong>, <strong>Kamuru</strong>, <strong>Hagu</strong>, <strong>Mwanee</strong>, and others</div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-2024-training.jpg" alt="STORM FC 2024 squad training">
+        <div class="cap">The 2024 squad at training</div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-wazee-a.jpg" alt="STORM FC Wazee (veterans) squad">
+        <div class="cap">The Wazee (veterans) squad, for a tournament sponsored by the area MP, <strong>Dr. Edwin Mugo Gichuki</strong>. Featuring <strong>Tisu</strong>, <strong>Iragara</strong>, <strong>Wa-winnie</strong>, <strong>Duu</strong>, <strong>Juma</strong>, <strong>Wa-kamaich</strong>, and others</div>
+      </div>
+      <div class="moment-card">
+        <img src="images/squad-wazee-b.jpg" alt="The full Wazee squad with local chiefs in attendance">
+        <div class="cap">The full Wazee squad, including Gitugi legend <strong>Sebey</strong>, with local chiefs in attendance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sponsor" id="sponsor">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">For Partners</div>
+      <h2 class="section-title">Back The Storm</h2>
+      <p class="section-body">STORM FC gives sponsors direct, visible reach into the Gitugi community — while backing youth development that lasts well beyond a season.</p>
+    </div>
+    <div class="sponsor-grid reveal">
+      <div class="sponsor-card">
+        <span class="num">01</span>
+        <h3>Community reach</h3>
+        <p>Matchday crowds, local families, and 22 years of standing in Gitugi Ward — your brand reaches people who trust this club.</p>
+      </div>
+      <div class="sponsor-card">
+        <span class="num">02</span>
+        <h3>Youth development</h3>
+        <p>Sponsorship funds kits, pitch access, and training for young players who might not otherwise get the chance.</p>
+      </div>
+      <div class="sponsor-card">
+        <span class="num">03</span>
+        <h3>Visible, lasting presence</h3>
+        <p>Logo placement on kits, this website, and matchday materials — a long-term association with a club that's still here in 2026.</p>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary">Become a Sponsor</a>
+      <a href="#" class="btn btn-outline">Download Club Profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="foot-brand">STORM FC</div>
+        <p>Gitugi Ward, Murang'a County, Kenya.<br>Founded 2004 — still nurturing talent today.</p>
+      </div>
+      <div>
+        <h5>Club</h5>
+        <ul>
+          <li><a href="#history">History</a></li>
+          <li><a href="#manager">Baba Chui</a></li>
+          <li><a href="#legends">Legends</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="#">Facebook page</a></li>
+          <li><a href="mailto:info@stormfc.example">info@stormfc.example</a></li>
+          <li><a href="#sponsor">Sponsor the club</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">&copy; 2026 STORM FC, Gitugi Ward. Built for the community.</p>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  const toggle = document.querySelector('.nav-toggle');
+  const navUl = document.querySelector('nav ul');
+  toggle.addEventListener('click', () => {
+    const open = navUl.style.display === 'flex';
+    navUl.style.cssText = open ? '' : 'display:flex; flex-direction:column; position:fixed; top:64px; right:0; left:0; background:#0F1F17; padding:20px 28px; gap:18px;';
+  });
+</script>
+
+</body>
+</html>
