@@ -115,6 +115,16 @@
   .scroll-cue .line{ width:1px; height:36px; background:var(--chalk-dim); animation:drop 1.8s ease-in-out infinite; }
   @keyframes drop{ 0%,100%{ transform:scaleY(0.4); opacity:0.4; } 50%{ transform:scaleY(1); opacity:1; } }
 
+  /* ---------- DOWNLOADABLE PHOTOS ---------- */
+  a.dl-link{ position:relative; display:block; }
+  .dl-badge{
+    position:absolute; top:8px; right:8px; width:30px; height:30px; border-radius:50%;
+    background:rgba(15,31,23,0.75); border:1px solid rgba(242,238,227,0.4);
+    color:var(--chalk); display:flex; align-items:center; justify-content:center;
+    font-size:0.9rem; z-index:2; transition:background .2s ease, transform .2s ease;
+  }
+  a.dl-link:hover .dl-badge{ background:var(--clay); transform:scale(1.08); }
+
   /* ---------- SECTION SHELL ---------- */
   section{ position:relative; padding:120px 0; }
   .section-head{ margin-bottom:56px; max-width:640px; }
@@ -257,6 +267,17 @@
   footer ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
   .foot-brand{ font-family:var(--display); font-size:1.4rem; text-transform:uppercase; margin-bottom:10px; }
   .fine{ margin-top:48px; font-family:var(--mono); font-size:0.72rem; color:var(--chalk-dim); opacity:0.6; }
+  .credit{
+    margin-top:44px; padding-top:32px; border-top:1px solid rgba(242,238,227,0.08);
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:24px;
+  }
+  .credit-label{ font-family:var(--mono); font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--chalk-dim); margin-bottom:8px; }
+  .credit-name{ font-weight:700; font-size:1.02rem; }
+  .credit-bio{ color:var(--chalk-dim); font-size:0.85rem; max-width:440px; margin-top:8px; line-height:1.5; }
+  .credit-links{ display:flex; flex-wrap:wrap; gap:18px; font-family:var(--mono); font-size:0.8rem; }
+  .credit-links a{ color:var(--gold); text-decoration:none; }
+  .credit-links a:hover{ text-decoration:underline; }
+  @media (max-width:720px){ .credit{ align-items:flex-start; } }
   @media (max-width:720px){ .footer-grid{ grid-template-columns:1fr; gap:28px; } }
 </style>
 </head>
@@ -353,7 +374,7 @@
     <div class="kicker reveal">A Tribute</div>
     <div class="tribute-grid reveal">
       <div class="tribute-photo">
-        <img src="images/muchoki.jpg" alt="Muchoki, manager of STORM FC">
+        <a class="dl-link" href="images/muchoki.jpg" download title="Download photo"><img src="images/muchoki.jpg" alt="Muchoki, manager of STORM FC"><span class="dl-badge">&#8595;</span></a>
       </div>
       <div>
         <div class="tribute-name">Muchoki</div>
@@ -363,6 +384,9 @@
           <div><div class="num">22</div><div class="lbl">Years as manager</div></div>
           <div><div class="num">1</div><div class="lbl">Club, one leader</div></div>
         </div>
+        <p class="tribute-copy" style="margin-top:20px;">
+          <a href="tel:+254790583226" style="color:var(--gold); font-family:var(--mono); font-size:0.95rem;">&#128222; +254 790 583 226</a>
+        </p>
       </div>
     </div>
   </div>
@@ -376,14 +400,14 @@
       <p class="section-body">Real photos from STORM FC's training sessions, derbies, and tournaments in Gitugi Ward and beyond.</p>
     </div>
     <div class="moments-grid reveal">
-      <div class="moment-card"><img src="images/team-1.jpg" alt="STORM FC players in training bibs"><div class="cap">Warm-ups before kickoff</div></div>
-      <div class="moment-card"><img src="images/team-2.jpg" alt="STORM FC squad photo"><div class="cap">Squad photo, backed by the community</div></div>
-      <div class="moment-card"><img src="images/team-3.jpg" alt="STORM FC matchday lineup"><div class="cap">Matchday lineup</div></div>
-      <div class="moment-card"><img src="images/team-5.jpg" alt="STORM FC team photo"><div class="cap">Ready for another season</div></div>
-      <div class="moment-card"><img src="images/team-6.jpg" alt="STORM FC players in a huddle"><div class="cap">Between whistles — team huddle</div></div>
-      <div class="moment-card"><img src="images/team-7.jpg" alt="STORM FC team lineup"><div class="cap">Lining up for the derby</div></div>
-      <div class="moment-card"><img src="images/team-8.jpg" alt="STORM FC players training"><div class="cap">Training in the club's colours</div></div>
-      <div class="moment-card"><img src="images/team-9.jpg" alt="STORM FC squad"><div class="cap">Squad strength, season after season</div></div>
+      <div class="moment-card"><a class="dl-link" href="images/team-1.jpg" download title="Download photo"><img src="images/team-1.jpg" alt="STORM FC players in training bibs"><span class="dl-badge">&#8595;</span></a><div class="cap">Warm-ups before kickoff</div></div>
+      <div class="moment-card"><a class="dl-link" href="images/team-2.jpg" download title="Download photo"><img src="images/team-2.jpg" alt="STORM FC squad photo"><span class="dl-badge">&#8595;</span></a><div class="cap">Squad photo, backed by the community</div></div>
+      <div class="moment-card"><a class="dl-link" href="images/team-3.jpg" download title="Download photo"><img src="images/team-3.jpg" alt="STORM FC matchday lineup"><span class="dl-badge">&#8595;</span></a><div class="cap">Matchday lineup</div></div>
+      <div class="moment-card"><a class="dl-link" href="images/team-5.jpg" download title="Download photo"><img src="images/team-5.jpg" alt="STORM FC team photo"><span class="dl-badge">&#8595;</span></a><div class="cap">Ready for another season</div></div>
+      <div class="moment-card"><a class="dl-link" href="images/team-6.jpg" download title="Download photo"><img src="images/team-6.jpg" alt="STORM FC players in a huddle"><span class="dl-badge">&#8595;</span></a><div class="cap">Between whistles — team huddle</div></div>
+      <div class="moment-card"><a class="dl-link" href="images/team-7.jpg" download title="Download photo"><img src="images/team-7.jpg" alt="STORM FC team lineup"><span class="dl-badge">&#8595;</span></a><div class="cap">Lining up for the derby</div></div>
+      <div class="moment-card"><a class="dl-link" href="images/team-8.jpg" download title="Download photo"><img src="images/team-8.jpg" alt="STORM FC players training"><span class="dl-badge">&#8595;</span></a><div class="cap">Training in the club's colours</div></div>
+      <div class="moment-card"><a class="dl-link" href="images/team-9.jpg" download title="Download photo"><img src="images/team-9.jpg" alt="STORM FC squad"><span class="dl-badge">&#8595;</span></a><div class="cap">Squad strength, season after season</div></div>
     </div>
   </div>
 </section>
@@ -397,35 +421,35 @@
     </div>
     <div class="legends-grid reveal">
       <div class="legend-card">
-        <div class="legend-photo"><img src="images/kelvin.jpg" alt="Kelvin, former STORM FC player"></div>
+        <div class="legend-photo"><a class="dl-link" href="images/kelvin.jpg" download title="Download photo"><img src="images/kelvin.jpg" alt="Kelvin, former STORM FC player"><span class="dl-badge">&#8595;</span></a></div>
         <div class="legend-info"><h4>Kelvin</h4><span>Former Player</span></div>
       </div>
       <div class="legend-card">
-        <div class="legend-photo"><img src="images/micah.jpg" alt="Micah, STORM FC's all-time goalkeeper, coaching a training session"></div>
+        <div class="legend-photo"><a class="dl-link" href="images/micah.jpg" download title="Download photo"><img src="images/micah.jpg" alt="Micah, STORM FC's all-time goalkeeper, coaching a training session"><span class="dl-badge">&#8595;</span></a></div>
         <div class="legend-info"><h4>Micah</h4><span>All-Time Goalkeeper &middot; Coach</span></div>
       </div>
       <div class="legend-card">
-        <div class="legend-photo"><img src="images/mwanee.jpg" alt="Mwaniki, aka Mwanee, holding midfielder"></div>
+        <div class="legend-photo"><a class="dl-link" href="images/mwanee.jpg" download title="Download photo"><img src="images/mwanee.jpg" alt="Mwaniki, aka Mwanee, holding midfielder"><span class="dl-badge">&#8595;</span></a></div>
         <div class="legend-info"><h4>Mwaniki "Mwanee"</h4><span>Holding Midfielder &middot; 2025&ndash;date</span></div>
       </div>
       <div class="legend-card">
-        <div class="legend-photo"><img src="images/davy.jpg" alt="Davy, goal-scoring forward"></div>
+        <div class="legend-photo"><a class="dl-link" href="images/davy.jpg" download title="Download photo"><img src="images/davy.jpg" alt="Davy, goal-scoring forward"><span class="dl-badge">&#8595;</span></a></div>
         <div class="legend-info"><h4>Davy</h4><span>Goal-Scoring Machine &middot; 2022&ndash;date</span></div>
       </div>
       <div class="legend-card">
-        <div class="legend-photo"><img src="images/mashaa.jpg" alt="Mashaa, defender and academy graduate"></div>
+        <div class="legend-photo"><a class="dl-link" href="images/mashaa.jpg" download title="Download photo"><img src="images/mashaa.jpg" alt="Mashaa, defender and academy graduate"><span class="dl-badge">&#8595;</span></a></div>
         <div class="legend-info"><h4>Mashaa</h4><span>Defender &middot; Academy Graduate</span></div>
       </div>
       <div class="legend-card">
-        <div class="legend-photo"><img src="images/kdf.jpg" alt="KDF, lethal attacker"></div>
+        <div class="legend-photo"><a class="dl-link" href="images/kdf.jpg" download title="Download photo"><img src="images/kdf.jpg" alt="KDF, lethal attacker"><span class="dl-badge">&#8595;</span></a></div>
         <div class="legend-info"><h4>KDF</h4><span>Lethal Attacker</span></div>
       </div>
       <div class="legend-card">
-        <div class="legend-photo"><img src="images/binko.jpg" alt="Binko, attacking midfielder"></div>
+        <div class="legend-photo"><a class="dl-link" href="images/binko.jpg" download title="Download photo"><img src="images/binko.jpg" alt="Binko, attacking midfielder"><span class="dl-badge">&#8595;</span></a></div>
         <div class="legend-info"><h4>Binko</h4><span>Attacking Midfielder &middot; Storm Academy &rarr; Green FC &rarr; STORM FC</span></div>
       </div>
       <div class="legend-card">
-        <div class="legend-photo"><img src="images/kante.jpg" alt="Jontie Kante, playmaker"></div>
+        <div class="legend-photo"><a class="dl-link" href="images/kante.jpg" download title="Download photo"><img src="images/kante.jpg" alt="Jontie Kante, playmaker"><span class="dl-badge">&#8595;</span></a></div>
         <div class="legend-info"><h4>Jontie "Kante"</h4><span>Playmaker &middot; Storm Academy</span></div>
       </div>
       <div class="add-legend">+ Add another legend</div>
@@ -438,63 +462,63 @@
     </div>
     <div class="moments-grid reveal">
       <div class="moment-card">
-        <img src="images/squad-founding-defenders.jpg" alt="Muchoki with Paulo, Jonte, and Mashaa">
+        <a class="dl-link" href="images/squad-founding-defenders.jpg" download title="Download photo"><img src="images/squad-founding-defenders.jpg" alt="Muchoki with Paulo, Jonte, and Mashaa"><span class="dl-badge">&#8595;</span></a>
         <div class="cap"><strong>Muchoki</strong> (manager) with <strong>Paulo</strong>, <strong>Jonte</strong>, and <strong>Mashaa</strong> — all defenders</div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2020-2021.jpg" alt="The 2020-2021 STORM FC squad">
+        <a class="dl-link" href="images/squad-2020-2021.jpg" download title="Download photo"><img src="images/squad-2020-2021.jpg" alt="The 2020-2021 STORM FC squad"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">2020–2021 squad: <strong>Mururu</strong>, <strong>Stivo</strong>, <strong>Marto</strong>, <strong>Ramsey</strong>, and <strong>Davey</strong>, captained by <strong>Jack</strong></div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-academy-2021-2023.jpg" alt="STORM Academy graduates 2021-2023">
+        <a class="dl-link" href="images/squad-academy-2021-2023.jpg" download title="Download photo"><img src="images/squad-academy-2021-2023.jpg" alt="STORM Academy graduates 2021-2023"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">Storm Academy, 2021–2023: <strong>Marto</strong>, <strong>Steve</strong>, <strong>Ramsey</strong> ("Watua"), and <strong>Paulo</strong> — mostly defenders, with Steve at winger</div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2022.jpg" alt="The 2022 STORM FC squad">
+        <a class="dl-link" href="images/squad-2022.jpg" download title="Download photo"><img src="images/squad-2022.jpg" alt="The 2022 STORM FC squad"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">2022 squad — many graduates of Green FC, STORM's feeder team</div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2023-champions-a.jpg" alt="The 2023 ward tournament champions">
+        <a class="dl-link" href="images/squad-2023-champions-a.jpg" download title="Download photo"><img src="images/squad-2023-champions-a.jpg" alt="The 2023 ward tournament champions"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">2023 ward tournament champions, sponsored by <strong>Hon. Morris Thuku</strong> — featuring young defender <strong>Vaite</strong>, then still a high schooler</div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2023-champions-b.jpg" alt="The 2023 squad">
+        <a class="dl-link" href="images/squad-2023-champions-b.jpg" download title="Download photo"><img src="images/squad-2023-champions-b.jpg" alt="The 2023 squad"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">2023 squad: <strong>Jaymoo</strong>, <strong>Paulo</strong>, <strong>Marto</strong>, and <strong>Michael</strong></div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2024-2025.jpg" alt="The 2024-2025 STORM FC squad at half-time">
+        <a class="dl-link" href="images/squad-2024-2025.jpg" download title="Download photo"><img src="images/squad-2024-2025.jpg" alt="The 2024-2025 STORM FC squad at half-time"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">2024–2025 squad, together at half-time</div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-greenfc-2023.jpg" alt="Green FC 2023 squad, STORM FC's feeder team">
+        <a class="dl-link" href="images/squad-greenfc-2023.jpg" download title="Download photo"><img src="images/squad-greenfc-2023.jpg" alt="Green FC 2023 squad, STORM FC's feeder team"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">Green FC (STORM's feeder team), 2023 squad: <strong>Marto</strong>, <strong>Ndush</strong>, <strong>Shishoka</strong>, <strong>Mwas Giks</strong>, <strong>Vaite</strong>, <strong>Caicedo</strong>, <strong>Mashaa</strong>, <strong>Manyui</strong>, and <strong>Binkou</strong></div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-stormfc-2023-gray.jpg" alt="STORM FC 2023 squad">
+        <a class="dl-link" href="images/squad-stormfc-2023-gray.jpg" download title="Download photo"><img src="images/squad-stormfc-2023-gray.jpg" alt="STORM FC 2023 squad"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">STORM FC, 2023 squad: <strong>Hagu</strong>, <strong>Consol</strong>, <strong>Anto</strong>, <strong>Paulo</strong>, <strong>Mashaa</strong>, <strong>Mikey</strong>, <strong>Chaplain</strong>, <strong>Sammy</strong>, <strong>Bandera's</strong>, <strong>Saba</strong>, <strong>Mose</strong>, <strong>Rayu</strong>, <strong>Marto Kabuda</strong>, <strong>Ramsey</strong>, <strong>Davy</strong>, <strong>Mururu</strong>, <strong>Manyui</strong>, <strong>Symo</strong>, and <strong>Vosti</strong></div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2024.jpg" alt="Part of the 2024 STORM FC squad">
+        <a class="dl-link" href="images/squad-2024.jpg" download title="Download photo"><img src="images/squad-2024.jpg" alt="Part of the 2024 STORM FC squad"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">2024 squad: <strong>Sammy</strong>, <strong>Kamuru</strong>, <strong>Hagu</strong>, <strong>Mwanee</strong>, and others</div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2024-training.jpg" alt="STORM FC 2024 squad training">
+        <a class="dl-link" href="images/squad-2024-training.jpg" download title="Download photo"><img src="images/squad-2024-training.jpg" alt="STORM FC 2024 squad training"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">The 2024 squad at training</div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2024-b.jpg" alt="Kdf, Sammy, Mikey and Jonte, 2024 squad">
+        <a class="dl-link" href="images/squad-2024-b.jpg" download title="Download photo"><img src="images/squad-2024-b.jpg" alt="Kdf, Sammy, Mikey and Jonte, 2024 squad"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">2024 squad: <strong>Kdf</strong>, <strong>Sammy</strong>, <strong>Mikey</strong>, and <strong>Jonte</strong></div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-2020-selfie.jpg" alt="2020 squad selfie">
+        <a class="dl-link" href="images/squad-2020-selfie.jpg" download title="Download photo"><img src="images/squad-2020-selfie.jpg" alt="2020 squad selfie"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">2020 squad: <strong>Manyui</strong>, <strong>Nyaste</strong>, <strong>Kante</strong>, <strong>Jonte</strong>, and <strong>Mashaa</strong></div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-wazee-a.jpg" alt="STORM FC Wazee (veterans) squad">
+        <a class="dl-link" href="images/squad-wazee-a.jpg" download title="Download photo"><img src="images/squad-wazee-a.jpg" alt="STORM FC Wazee (veterans) squad"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">The Wazee (veterans) squad, for a tournament sponsored by the area MP, <strong>Dr. Edwin Mugo Gichuki</strong>. Featuring <strong>Tisu</strong>, <strong>Iragara</strong>, <strong>Wa-winnie</strong>, <strong>Duu</strong>, <strong>Juma</strong>, <strong>Wa-kamaich</strong>, and others</div>
       </div>
       <div class="moment-card">
-        <img src="images/squad-wazee-b.jpg" alt="The full Wazee squad with local chiefs in attendance">
+        <a class="dl-link" href="images/squad-wazee-b.jpg" download title="Download photo"><img src="images/squad-wazee-b.jpg" alt="The full Wazee squad with local chiefs in attendance"><span class="dl-badge">&#8595;</span></a>
         <div class="cap">The full Wazee squad, including Gitugi legend <strong>Sebey</strong>, with local chiefs in attendance</div>
       </div>
     </div>
@@ -550,10 +574,21 @@
       <div>
         <h5>Connect</h5>
         <ul>
-          <li><a href="#">Facebook page</a></li>
+          <li><a href="http://www.stormfc.com/" target="_blank" rel="noopener">Club Website</a></li>
           <li><a href="mailto:info@stormfc.example">info@stormfc.example</a></li>
           <li><a href="#sponsor">Sponsor the club</a></li>
         </ul>
+      </div>
+    </div>
+    <div class="credit">
+      <div>
+        <div class="credit-label">Site Built By</div>
+        <div class="credit-name">Kelvin Maina Irungu</div>
+        <p class="credit-bio">Full-stack developer and BBIT student at Dedan Kimathi University of Technology, running Binkou Tech Solutions — building websites, APIs, and AI-powered tools for local businesses and community projects across Kenya.</p>
+      </div>
+      <div class="credit-links">
+        <a href="tel:+254748934502">&#128222; +254 748 934 502</a>
+        <a href="https://kevobinkou.github.io/kelvin-portfolio" target="_blank" rel="noopener">Portfolio &#8599;</a>
       </div>
     </div>
     <p class="fine">&copy; 2026 STORM FC, Gitugi Ward. Built for the community.</p>
