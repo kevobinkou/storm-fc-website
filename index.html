@@ -163,6 +163,8 @@
   }
   .t-content h3{ font-family:var(--body); font-weight:700; font-size:1.05rem; margin-bottom:4px; }
   .t-content p{ color:var(--chalk-dim); font-size:0.95rem; max-width:520px; }
+  .t-content a{ color:var(--gold); text-decoration:none; font-weight:600; }
+  .t-content a:hover{ text-decoration:underline; }
 
   @media (max-width:600px){
     .timeline::before{ left:34px; }
@@ -210,6 +212,18 @@
   }
   .moment-card img{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
   .moment-card .cap{ padding:12px 14px; font-size:0.85rem; color:var(--chalk-dim); }
+  /* portrait scans (e.g. trophy photos): keep faces in frame when cropped to 4:3 */
+  .moment-card.portrait img{ object-position:center 22%; }
+
+  /* ---------- ERA LABELS (Through The Eras) ---------- */
+  .era-label{
+    display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;
+    margin:44px 0 20px; padding-bottom:12px;
+    border-bottom:1px solid rgba(242,238,227,0.1);
+  }
+  .era-label:first-of-type{ margin-top:0; }
+  .era-label .yrs{ font-family:var(--display); font-size:1.8rem; letter-spacing:0.02em; color:var(--gold); text-transform:uppercase; }
+  .era-label .tag{ font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--chalk-dim); }
 
   /* ---------- LEGENDS GALLERY ---------- */
   .legends-grid{
@@ -291,6 +305,7 @@
       <li><a href="#manager">Baba Chui</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#legends">Legends</a></li>
+      <li><a href="#eras">Eras</a></li>
       <li><a href="#sponsor">Partner With Us</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Menu">☰</button>
@@ -342,6 +357,13 @@
         <div class="t-content">
           <h3>The club is founded</h3>
           <p>STORM FC is formed in Gitugi Ward under Muchoki's leadership, as a home for local football talent. Add the founding story here — who started it, and why.</p>
+        </div>
+      </div>
+      <div class="t-row reveal">
+        <div class="t-year">2010&ndash;15</div>
+        <div class="t-content">
+          <h3>Squads, silverware and matchdays</h3>
+          <p>The early 2010s are captured in photographs: December squad photos in 2010 and 2013, and trophy moments from 2011. See them in <a href="#era-2010-2015">the 2010&ndash;2015 gallery</a>.</p>
         </div>
       </div>
       <div class="t-row reveal">
@@ -455,10 +477,59 @@
       <div class="add-legend">+ Add another legend</div>
     </div>
 
-    <div class="section-head reveal" style="margin-top:64px;">
+    <div class="section-head reveal" id="eras" style="margin-top:64px;">
       <div class="kicker">Squad By Squad</div>
       <h2 class="section-title">Through The Eras</h2>
       <p class="section-body">STORM FC's squads, season by season, and the names behind them.</p>
+    </div>
+
+    <!-- ===== 2010–2015 ===== -->
+    <div class="era-label reveal" id="era-2010-2015">
+      <span class="yrs">2010&ndash;2015</span>
+      <span class="tag">The early Silent Lions</span>
+    </div>
+    <div class="moments-grid reveal">
+      <div class="moment-card">
+        <a class="dl-link" href="images/squad-2010-dec.jpg" download title="Download photo"><img src="images/squad-2010-dec.jpg" alt="STORM FC squad in white kit, 26 December 2010" loading="lazy"><span class="dl-badge">&#8595;</span></a>
+        <div class="cap"><strong>26 Dec 2010</strong> — the squad in white, lined up with match officials and club supporters</div>
+        <!-- TODO: add player names, left to right -->
+      </div>
+      <div class="moment-card portrait">
+        <a class="dl-link" href="images/trophy-2011-dec.jpg" download title="Download photo"><img src="images/trophy-2011-dec.jpg" alt="A STORM FC player receiving a trophy, 18 December 2011" loading="lazy"><span class="dl-badge">&#8595;</span></a>
+        <div class="cap"><strong>18 Dec 2011</strong> — trophy presentation night</div>
+        <!-- TODO: add the player's name and the tournament -->
+      </div>
+      <div class="moment-card portrait">
+        <a class="dl-link" href="images/trophy-lift.jpg" download title="Download photo"><img src="images/trophy-lift.jpg" alt="A STORM FC player lifting a trophy" loading="lazy"><span class="dl-badge">&#8595;</span></a>
+        <div class="cap">Lifting the cup in the yellow-and-green kit</div>
+        <!-- TODO: add the player's name, tournament and year -->
+      </div>
+      <div class="moment-card">
+        <a class="dl-link" href="images/squad-blue-kit.jpg" download title="Download photo"><img src="images/squad-blue-kit.jpg" alt="STORM FC squad in sky-blue kit with supporters" loading="lazy"><span class="dl-badge">&#8595;</span></a>
+        <div class="cap">The squad in sky blue, with supporters</div>
+        <!-- TODO: add year and player names -->
+      </div>
+      <div class="moment-card">
+        <a class="dl-link" href="images/squad-hillside.jpg" download title="Download photo"><img src="images/squad-hillside.jpg" alt="STORM FC players and officials posing on the hillside pitch" loading="lazy"><span class="dl-badge">&#8595;</span></a>
+        <div class="cap">Players and officials together on the hillside pitch</div>
+        <!-- TODO: add year and occasion -->
+      </div>
+      <div class="moment-card">
+        <a class="dl-link" href="images/goalkeeper-dive.jpg" download title="Download photo"><img src="images/goalkeeper-dive.jpg" alt="A STORM FC goalkeeper diving for the ball" loading="lazy"><span class="dl-badge">&#8595;</span></a>
+        <div class="cap">Full stretch — a goalkeeper dives for the ball</div>
+        <!-- TODO: add the goalkeeper's name -->
+      </div>
+      <div class="moment-card">
+        <a class="dl-link" href="images/squad-2013-dec.jpg" download title="Download photo"><img src="images/squad-2013-dec.jpg" alt="STORM FC squad in red kit, 15 December 2013" loading="lazy"><span class="dl-badge">&#8595;</span></a>
+        <div class="cap"><strong>15 Dec 2013</strong> — the squad in red, with the goalkeeper in his bright kit</div>
+        <!-- TODO: add player names, back row then front row -->
+      </div>
+    </div>
+
+    <!-- ===== LATER ERAS ===== -->
+    <div class="era-label reveal">
+      <span class="yrs">2020&ndash;today</span>
+      <span class="tag">The academy generation</span>
     </div>
     <div class="moments-grid reveal">
       <div class="moment-card">
@@ -569,6 +640,7 @@
           <li><a href="#history">History</a></li>
           <li><a href="#manager">Baba Chui</a></li>
           <li><a href="#legends">Legends</a></li>
+          <li><a href="#eras">Through The Eras</a></li>
         </ul>
       </div>
       <div>
